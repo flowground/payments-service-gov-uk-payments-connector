@@ -1,0 +1,208 @@
+{
+    "title": "GOV.UK Pay",
+    "description": "GOV.UK Pay API",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/payments.service.gov.uk/payments/1.0.2/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://publicapi.payments.service.gov.uk/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Authorization": {
+                "label": "Authorization (Authorization)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "searchPayments": {
+            "main": "./lib/actions/searchPayments.js",
+            "title": "Search payments",
+            "description": "Search payments by reference, state, 'from' and 'to' date. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchPayments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "newPayment": {
+            "main": "./lib/actions/newPayment.js",
+            "title": "Create new payment",
+            "description": "Create a new payment for the account associated to the Authorisation token. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/newPayment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPayment": {
+            "main": "./lib/actions/getPayment.js",
+            "title": "Find payment by ID",
+            "description": "Return information about the payment The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPayment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cancelPayment": {
+            "main": "./lib/actions/cancelPayment.js",
+            "title": "Cancel payment",
+            "description": "Cancel a payment based on the provided payment ID and the Authorisation token. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'. A payment can only be cancelled if it's in a state that isn't finished.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cancelPayment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "capturePayment": {
+            "main": "./lib/actions/capturePayment.js",
+            "title": "Capture payment",
+            "description": "Capture a payment based on the provided payment ID and the Authorisation token. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'. A payment can only be captured if it's in 'submitted' state",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/capturePayment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getPaymentEvents": {
+            "main": "./lib/actions/getPaymentEvents.js",
+            "title": "Return payment events by ID",
+            "description": "Return payment events information about a certain payment The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getPaymentEvents.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getRefunds": {
+            "main": "./lib/actions/getRefunds.js",
+            "title": "Get all refunds for a payment",
+            "description": "Return refunds for a payment. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRefunds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "submitRefund": {
+            "main": "./lib/actions/submitRefund.js",
+            "title": "Submit a refund for a payment",
+            "description": "Return issued refund information. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/submitRefund.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getRefundById": {
+            "main": "./lib/actions/getRefundById.js",
+            "title": "Find payment refund by ID",
+            "description": "Return payment refund information by Refund ID The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getRefundById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "searchRefunds": {
+            "main": "./lib/actions/searchRefunds.js",
+            "title": "Search refunds",
+            "description": "Search refunds by 'from' and 'to' date. The Authorisation token needs to be specified in the 'authorization' header as 'authorization: Bearer YOUR_API_KEY_HERE'",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchRefunds.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

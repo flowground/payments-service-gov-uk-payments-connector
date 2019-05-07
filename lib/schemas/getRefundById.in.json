@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "paymentId": {
+            "required": true,
+            "type": "string"
+        },
+        "refundId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

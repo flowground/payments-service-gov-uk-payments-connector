@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "reference": {
+            "required": false,
+            "type": "string"
+        },
+        "email": {
+            "required": false,
+            "type": "string"
+        },
+        "state": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "created",
+                "started",
+                "submitted",
+                "success",
+                "failed",
+                "cancelled",
+                "error"
+            ]
+        },
+        "card_brand": {
+            "required": false,
+            "type": "string"
+        },
+        "from_date": {
+            "required": false,
+            "type": "string"
+        },
+        "to_date": {
+            "required": false,
+            "type": "string"
+        },
+        "page": {
+            "required": false,
+            "type": "string"
+        },
+        "display_size": {
+            "required": false,
+            "type": "string"
+        },
+        "cardholder_name": {
+            "required": false,
+            "type": "string"
+        },
+        "first_digits_card_number": {
+            "required": false,
+            "type": "string"
+        },
+        "last_digits_card_number": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

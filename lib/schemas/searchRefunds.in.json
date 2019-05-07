@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "from_date": {
+            "required": false,
+            "type": "string"
+        },
+        "to_date": {
+            "required": false,
+            "type": "string"
+        },
+        "page": {
+            "required": false,
+            "type": "string"
+        },
+        "display_size": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

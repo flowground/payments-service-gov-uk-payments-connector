@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "amount": {
+                    "description": "amount in pence",
+                    "example": 12000,
+                    "format": "int32",
+                    "maximum": 10000000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "delayed_capture": {
+                    "description": "delayed capture flag",
+                    "example": false,
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "description": {
+                    "description": "payment description",
+                    "example": "New passport application",
+                    "type": "string"
+                },
+                "language": {
+                    "description": "ISO-639-1 Alpha-2 code of a supported language to use on the payment pages",
+                    "enum": [
+                        "en",
+                        "cy"
+                    ],
+                    "example": "en",
+                    "type": "string"
+                },
+                "reference": {
+                    "description": "payment reference",
+                    "example": "12345",
+                    "type": "string"
+                },
+                "return_url": {
+                    "description": "service return url",
+                    "example": "https://service-name.gov.uk/transactions/12345",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "amount",
+                "description",
+                "reference",
+                "return_url"
+            ],
+            "type": "object"
+        }
+    }
+}

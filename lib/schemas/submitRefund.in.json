@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "paymentId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The Payment Refund Request Payload",
+            "properties": {
+                "amount": {
+                    "description": "Amount in pence. Can't be more than the available amount for refunds",
+                    "example": 150000,
+                    "format": "int32",
+                    "maximum": 10000000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "refund_amount_available": {
+                    "description": "Amount in pence. Total amount still available before issuing the refund",
+                    "example": 200000,
+                    "format": "int32",
+                    "maximum": 10000000,
+                    "minimum": 1,
+                    "readOnly": true,
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "amount"
+            ],
+            "type": "object"
+        }
+    }
+}
